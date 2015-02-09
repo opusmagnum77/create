@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   
@@ -12,6 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :fog
   else
     storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -20,9 +21,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
 
-end
 
-end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -32,7 +32,7 @@ end
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  process :resize_to_fit => [200, 300] #maintains aspect ratio; to fill  crops
   #
   # def scale(width, height)
   #   # do something
@@ -53,6 +53,6 @@ end
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
-  # end
+  end
 
 

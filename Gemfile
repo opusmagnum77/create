@@ -53,5 +53,6 @@ gem 'pg', group: :production
 
   gem 'fog'
   gem 'figaro'
+  gem 'mini_magick'
 
 
